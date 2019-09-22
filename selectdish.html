@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dinner planner</title>
+
+    <!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/selectdish.css">
+    
+    <script src="js/app.js"></script>
+    <script src="js/view/sidebarView.js"></script>
+    <script src="js/view/dishesView.js"></script>
+    <script src="js/view/dishDetailsView.js"></script>
+
+
+  </head>
+  <body>
+
+    <div class="container"> 
+      
+      <div class="row">
+        <div class="front">
+          <div class="maintitle">
+            <h1>Dinner planner</h1>
+          </div>
+        </div>
+      </div>
+
+      <div class="row" ID= "Sidebar">
+        <div class="col-md-3 box-column">
+          <div class="row">
+            <div class="title">
+              <h2>My Dinner </h2>
+            </div>
+          </div>
+          <div class="row">
+            <div class="title">
+              <h4>People </h4>
+              <input ID="numberOfGuests" type="number" min="1" max="999" class="numberofpeople">
+            </div>
+          </div>
+          <div class="row"> 
+            <div style="border:1px solid" class="title2">
+              <h4 style="text-align:left"> Dish name </h4>
+              <h4 style="text-align:right" class="cost"> Cost </h4>
+            </div>
+          </div>
+          <div class="row">	
+            <h4 style="text-align:right"> SEEK 0.00 </h4>
+          </div>
+          <div class="row"> 
+            <div class="contentbutton" style="text-align: center">	
+              <button type="button" class="newbutton">Confirm Dinner</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-9 box-column3">
+          
+          <div class="row">
+              <div class="title">
+                <h3>Find a dish </h3>
+              </div>
+            </div>
+            <div class="row searchbar"> 
+              <div  class=keywords >
+                <input type="text" placeholder="Enter key words"> 
+              </div>
+              <select class="windowall">
+                <option value="All">All</option>
+                <option value="Main Course">Main Course</option>
+                <option value="Side Dish">Side Dish</option>
+                <option value="Dessert">Dessert</option>
+                <option value="Appetizer">Appetizer</option>
+                <option value="Appetizer">...</option>
+              </select>
+              <div class="Search">	
+                <button type="button" class="search">Search</button>
+              </div>
+            </div>             
+            <div id="dishContainer" class="rowgallery">
+
+
+              <div class="col-sm-5" id="id3"> 
+                <div class="thumbnail">
+                    <div class="caption">
+                      <img class="picsize" id="dishPicture" src="C:\Users\Justyna\Documents\GitHub\dinnerplanner-html\images\bakedbrie.jpg" alt="Cinque Terre" width="114" height="100">
+                      <p class=text id="dishName">Baked brie</p>
+                      <p><a href="#" class="btn btn-default" role="button">choose</a></p>
+                      <h6>Prize</h6>
+                    </div>
+                </div> 
+
+
+                <div class="gallery" id="id3">
+                  <a class="picsize" target="_blank" href="C:\Users\Justyna\Documents\GitHub\dinnerplanner-html\images\bakedbrie.jpg">
+                    <img src="C:\Users\Justyna\Documents\GitHub\dinnerplanner-html\images\bakedbrie.jpg" alt="Cinque Terre" width="114" height="100">
+                  </a>
+                  <div class="desc">Baked brie</div>
+                </div>
+
+                <div class="gallery" id="id200">
+                  <a class="picsize" target="_blank" href="C:\Users\Justyna\Documents\GitHub\dinnerplanner-html\images\icecream.jpg">
+                    <img src="C:\Users\Justyna\Documents\GitHub\dinnerplanner-html\images\icecream.jpg" alt="Cinque Terre" width="114" height="100">
+                  </a>
+                  <div class="desc">Ice cream</div>
+                </div>
+                <div class="gallery">
+                  <a class="picsize" target="_blank" href="C:\Users\Justyna\Documents\GitHub\dinnerplanner-html\images\meatballs.jpg">
+                    <img src="C:\Users\Justyna\Documents\GitHub\dinnerplanner-html\images\meatballs.jpg" alt="Cinque Terre" width="114" height="100">
+                  </a>
+                  <div class="desc">Meat balls</div>
+                </div>
+                <div class="gallery">
+                  <a class="picsize" target="_blank" href="C:\Users\Justyna\Documents\GitHub\dinnerplanner-html\images\sourdough.jpg">
+                    <img src="C:\Users\Justyna\Documents\GitHub\dinnerplanner-html\images\sourdough.jpg" alt="Cinque Terre" width="114" height="100">
+                  </a>
+                  <div class="desc">Sour dough</div>
+                </div>
+                <div class="gallery">
+                    <a class="picsize" target="_blank" href="C:\Users\Justyna\Documents\GitHub\dinnerplanner-html\images\toast.jpg">
+                      <img src="C:\Users\Justyna\Documents\GitHub\dinnerplanner-html\images\toast.jpg" alt="Cinque Terre" width="114" height="100">
+                    </a>
+                    <div class="desc">Toast</div>
+                  </div>
+            </div>
+          </div>
+      </div>
+        
+    </div>
+    <script src="js/model/dinnerModel.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  
+  </body>
+
+</html>

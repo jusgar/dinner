@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Dinner planner</title>
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+	<link rel="stylesheet" type="text/css" href="css/selectdish.css">
+	<link rel="stylesheet" type="text/css" href="css/dishdetails.css">
+	<link rel="stylesheet" type="text/css" href="css/dinnerPrintout.css">
+	<link rel="stylesheet" type="text/css" href="css/dinnerOverview.css">
+
+
+
+</head>
+
+
+<body>
+	<div class="container-fluid">
+		<div class="row front">
+			<div class="col-md-4"></div>
+			<div class="col-md-4s" style="text-align:center">	
+				<h1>Dinner planner</h1>
+			</div>
+			<div class="col-md-4"></div>
+		</div>
+		<div class="row" id="welcomeView">
+			<div class="row ">
+				<div class="col-md-4 welcomeViewBox"></div>
+				<div class="col-md-4 content welcomeViewBox" style="text-align:center">
+					<h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non facilisis neque. Vestibulum
+					molestie nisl vel fermentum molestie. Nam aliquam efficitur quam, in fermentum elit ultrices
+					sed. Aliquam luctus purus eu est hendrerit, a porttitor justo volutpat. Aliquam aliquam sed mi
+					quis elementum. 
+					</h4>
+				</div>
+				<div class="col-md-4 welcomeViewBox"></div>
+			</div>
+			<div class="row">
+				<div class="col-md-4"></div>
+				<div class="col-md-4 contentbutton">
+					<button id="showDinnerBtn" type="button" class="createNewbutton">Create new dinner</button>
+				</div>
+				<div class="col-md-4"></div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-2 box-column" id="sideBarView">
+				<div class="row">
+					<div class="title">
+						<h2>My Dinner </h2>
+					</div>
+				</div>
+				<div class="row">
+					<div class="title">
+						<h4>People </h4>
+						<input ID="numberOfGuests" type="number" min="1" max="999" class="numberofpeople">
+					</div>
+				</div>
+				<div id="sideBarViewTable"></div><!--
+				<div class="row">
+					<div style="border:1px solid" class="title2">
+						<h4 style="text-align:left"> Dish name </h4>
+						<h4 style="text-align:right" class="cost"> Cost </h4>
+					</div>
+				</div>
+				<div class="row">
+					<h4 style="text-align:right"> SEK 0.00 </h4>
+				</div>-->
+				<div class="row contentbutton" style="text-align: center">
+					<br/>
+					<button id="confirmDinnerButton" type="button" class="confirmButtonDisabled">Confirm Dinner</button>
+				</div>	
+			</div>
+				<div class="col-md-10">
+					<div id="searchBarView" class="box-column">
+					<div class="row">
+						<div class="col-md-3">
+							<div class="title">
+								<h3>Find a dish </h3>
+							</div>
+						</div>
+					</div>
+					<div class="row searchbar">
+						<div class="col-md-3">
+							<div class="keywords">
+								<input id="keyword" type="text" placeholder="Enter key words"> 
+							</div>
+						</div>
+						<div class="col-md-2">
+							<select id="searchType" class="windowall">
+								<option value="">All</option>
+								<option value="starter">Appetizer</option>
+								<option value="main dish">Main Course</option>
+								<option value="dessert">Dessert</option>
+							</select>
+						</div>
+						<div class="col-md-2">
+							<div class="Search">	
+								<button id="searchButton" type="button" class="search">Search</button>
+							</div>
+						</div>
+					</div>
+					<div class="row"><br /></div>
+					</div>
+					<div class="row rowgallery" id="dishContainerView">
+						<!--<div class="col-sm-6 col-md-2">
+							<div class="thumbnail">
+							<img src="C:\Users\Justyna\Documents\GitHub\dinnerplanner-html\images\bakedbrie.jpg" alt="...">
+							<div class="caption" style="text-align: center">
+								<h3>Thumbnail label</h3>
+								<p> <a href="#" class="btn btn-default" role="button">Show details</a></p>
+							</div>
+							</div>
+						</div>-->
+						
+					</div>
+					<div id="ingredientsView">
+						<div class="col-md-5 box-column scroll" >
+							<div class="thumbnail">
+								<div class="caption">
+									<h1 id="dishName"></h1>
+									<img class="picsize img-responsive" id="dishPicture" src="" alt="Cinque Terre">
+									<p class=text id="dishNote"></p>
+									<p><a href="#" id="backToSearchButton" class="btn btn-default" role="button">back to search</a></p>
+									<h2>Preparation</h2>
+									<p class="text" id="dishPrep">Cras pharetra felis vitae venenatis cursus. Sed vitae enim pulvinar, aliquam magna mollis, molestie urna. Cras lorem ligula, tincidunt ut ullamcorper auctor, cursus et massa.  </p>
+								</div>
+							</div> 
+						</div>
+						<div id="dishIngrendiens" class="col-md-5 box-column">
+							<h2>INGREDIENTS FOR <span id="people" class="numberofpeople"></span> PEOPLE </h2>
+							<style>
+								th, td{
+								font-weight:bold;
+								border-bottom: 1px solid #f5de93;
+								}
+							</style>
+							<table id="ingredientsTable" class="table">
+							<!--<tr>
+								<td class="weights">2tsp</td>
+								<td>olive oil</td> 
+								<td>SEK</td>
+								<td>0,20</td>
+							</tr>-->
+						
+							</table>
+						</div>
+					</div>
+				</div>
+			</div> 
+				<!--<div class="gallery" id="id3">
+					<a class="picsize" target="_blank" href="C:\Users\Justyna\Documents\GitHub\dinnerplanner-html\images\bakedbrie.jpg">
+						<img src="C:\Users\Justyna\Documents\GitHub\dinnerplanner-html\images\bakedbrie.jpg" alt="Cinque Terre"
+							width="114" height="100">
+					</a>
+					<div class="desc">Baked brie</div>
+				</div>-->	
+		</div>
+		<div id="printoutView">
+			<div class="row rowstyle">
+				<div class="col-md-4">
+						<h2 style="text-align:left" > My Dinner: <span class="numberOfGuests"></span> people, Total: <span class="totalPrice"></span> SEK</h2>
+				</div>
+				<div class="col-md-4"></div>
+				<div class="col-md-4">
+					<button type="button" class="backtosearch" > Go back and edit dinner </button> 
+				</div>
+			</div>
+			<div id="printoutDishes">
+				<!--<div class="col-md-2">
+					<div id="dishPicture">
+						<a class="picsize" target="_blank" href="C:\Users\Justyna\Documents\GitHub\dinnerplanner-html\images\bakedbrie.jpg">
+							<img src="C:\Users\Justyna\Documents\GitHub\dinnerplanner-html\images\bakedbrie.jpg" alt="Cinque Terre" width="100" height="100">
+						</a>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="titledish">
+						<h2>Lasagne </h2>
+					</div>
+					<div class="text">
+						<p>Cras pharetra felis vitae venenatis cursus. Sed vitae enim pulvinar, aliquam magna mollis, molestie urna. Cras lorem ligula, tincidunt ut ullamcorper auctor, cursus et massa. </p>
+					</div>
+				</div>
+				<div class="col-md-7">
+					<div>
+						<h4>Preparation </h4>
+					</div>
+					<div class="text">
+						<p>Cras pharetra felis vitae venenatis cursus. Sed vitae enim pulvinar, aliquam magna mollis, molestie urna. Cras lorem ligula, tincidunt ut ullamcorper auctor, cursus et massa. Cras pharetra felis vitae venenatis cursus. Sed vitae enim pulvinar, aliquam magna mollis, molestie urna. Cras lorem ligula, tincidunt ut ullamcorper auctor, cursus et massa. Cras pharetra felis vitae venenatis cursus. Sed vitae enim pulvinar, aliquam magna mollis, molestie urna. Cras lorem ligula, tincidunt ut ullamcorper auctor, cursus et massa.
+							Cras pharetra felis vitae venenatis cursus. Sed vitae enim pulvinar, aliquam magna mollis, molestie urna. Cras lorem ligula, tincidunt ut ullamcorper auctor, cursus et massa. 
+						</p>
+						<p>Cras pharetra felis vitae venenatis cursus. Sed vitae enim pulvinar, aliquam magna mollis, molestie urna. Cras lorem ligula, tincidunt ut ullamcorper auctor, cursus et massa. Cras pharetra felis vitae venenatis cursus. Sed vitae enim pulvinar, aliquam magna mollis, molestie urna. Cras lorem ligula, tincidunt ut ullamcorper auctor, cursus et massa. Cras pharetra felis vitae venenatis cursus. Sed vitae enim pulvinar, aliquam magna mollis, molestie urna. Cras lorem ligula, tincidunt ut ullamcorper auctor, cursus et massa.
+							Cras pharetra felis vitae venenatis cursus.  
+						</p>
+					</div>
+				</div>-->
+			</div>
+		</div>
+		<div id="overView">
+			<div class="row rowstyle">
+				<div class="col-md-4">
+					<div>
+						<h2 style="text-align:left" > My Dinner: <span class="numberOfGuests"></span> people, Total: <span class="totalPrice"></span> SEK</h2>
+					</div>
+				</div>
+				<div class="col-md-4"></div>
+				<div class="col-md-4">
+					<div>
+						<button type="button" class="backtosearch" > Go back and edit dinner </button> 
+					</div>
+				</div>
+			</div>
+			
+					<div id="dishesOverview" class="row">
+
+					</div>
+					<!--<div class="row rowgallery">
+						<div class="gallery">
+							<a class="picsize" target="_blank" href="C:\Users\Justyna\Documents\GitHub\dinnerplanner-html\images\bakedbrie.jpg">
+							<img src="C:\Users\Justyna\Documents\GitHub\dinnerplanner-html\images\bakedbrie.jpg" alt="Cinque Terre" width="114" height="100">
+							</a>
+							<div class="desc">Baked brie</div>
+						</div>
+						<div class="gallery">
+							<a class="picsize" target="_blank" href="C:\Users\Justyna\Documents\GitHub\dinnerplanner-html\images\icecream.jpg">
+							<img src="C:\Users\Justyna\Documents\GitHub\dinnerplanner-html\images\icecream.jpg" alt="Cinque Terre" width="114" height="100">
+							</a>
+							<div class="desc">Ice cream</div>
+					</div>
+						<div class="gallery">
+							<a class="picsize" target="_blank" href="C:\Users\Justyna\Documents\GitHub\dinnerplanner-html\images\meatballs.jpg">
+							<img src="C:\Users\Justyna\Documents\GitHub\dinnerplanner-html\images\meatballs.jpg" alt="Cinque Terre" width="114" height="100">
+							</a>
+							<div class="desc">Meat balls</div>
+						</div>
+					</div>-->
+			<div row>
+				<div class="col-md-4"></div>
+				<div class="col-md-4">
+					<div class="printButton">	
+					<button id="printoutBtn" type="button" class="printButton">Print full recipe</button>
+					</div>
+				</div>
+				<div class="col-md-4"></div>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<!-- jQuery, only for use by Bootstrap -->
+		<script src="https://code.jquery.com/jquery.js"></script>
+		<!-- Bootstrap JavaScript, needed if you want for instance tabs, models, popovers etc. -->
+		<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+
+		<!-- The application JavaScript code -->
+		<script src="js/app.js"></script>
+		<script src="js/model/dinnerModel.js"></script>
+		<script src="js/view/exampleView.js"></script>
+		<script src="js/view/sideBarView.js"></script>
+		<script src="js/view/ingredientsView.js"></script>
+		<script src="js/view/dishContainerView.js"></script>
+		<script src="js/view/searchBarView.js"></script>
+		<script src="js/view/printoutView.js"></script>
+
+		<!-- TODO: Here you should include JS code for your other views -->
+</body>
+
+</html>

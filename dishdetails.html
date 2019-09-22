@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+ <html lang="en">
+   <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dinner planner</title>
+
+    <!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="C:\Users\Justyna\Documents\GitHub\dinnerplanner-html\css\dishdetails.css">
+    
+    <script src="js/app.js"></script>
+    <script src="js/view/sidebarView.js"></script>
+    <script src="js/view/dishDetailsView.js"></script>
+    <script src="js/view/dishesView.js"></script>
+
+
+  </head>
+
+   <body>
+
+     <div class="container"> 
+      
+       <div class="row">
+         <div class="front">
+           <div class="maintitle">
+             <h1>Dinner planner</h1>
+           </div>
+         </div>
+       </div>
+       <div class="row" >
+         <div class="col-md-2 box-column">
+            <div class="row">
+              <div class="title">
+                <h2>My Dinner </h2>
+              </div>
+            </div>
+            <div class="row">
+              <div class="title">
+                <h4>People </h4>
+                <input id="numberOfGuests" type="number" min="1" max="999" value="1" step="1" class="numberofpeople" />
+              </div>
+            </div>
+            <div class="row"> 
+              <div style="border-top: solid; border-bottom: solid; height:35px; margin-top: 5px" class="title2">
+                <h4 style="text-align:left"> Dish name </h4>
+                <h4 style="text-align:right; margin-right:10px"> Cost </h4>
+              </div>
+            </div>
+            <div class="row">	
+              <h4 style="text-align:right; margin-right:10px; margin-bottom: 20px; margin-top: 20px"> SEK 0.00 </h4>
+            </div>
+            <div class="row"> 
+              <div class="contentbutton" style="text-align: center">	
+                <button type="button" class="newbutton">Confirm Dinner</button>
+              </div>
+            </div>
+         </div>
+         <div class="col-md-5 box-column" ID="scroll">
+            <div class="thumbnail">
+              <div class="caption">
+                <h3 id="dishName">Lasagne</h3>
+                <img class="picsize" id="dishPicture" src="C:\Users\Justyna\Documents\GitHub\dinnerplanner-html\images\lasagne.jpg" alt="Cinque Terre" width="400" height="250">
+                <p class=text id="dishNote">Cras pharetra felis vitae venenatis cursus. Sed vitae enim pulvinar, aliquam magna mollis, molestie urna. Cras lorem ligula, tincidunt ut ullamcorper auctor, cursus et massa.</p>
+                <p><a href="#" class="btn btn-default" role="button">back to search</a></p>
+                <h6>Preparation</h6>
+                <p class="text" id="dishPrep">Cras pharetra felis vitae venenatis cursus. Sed vitae enim pulvinar, aliquam magna mollis, molestie urna. Cras lorem ligula, tincidunt ut ullamcorper auctor, cursus et massa.  </p>
+              </div>
+            </div> 
+         </div>
+         <div id="dishIngrendiens" class="col-md-5 box-column">
+            <h2>INGREDIENTS FOR <span id="people" class="numberofpeople"></span> PEOPLE </h2>
+            <style>
+              th, td{
+              font-weight:bold;
+              border-bottom: 1px solid #f5de93;
+              }
+            </style>
+            <table id="ingredientsTable" class="table">
+            <tr>
+              <td class="weights">2tsp</td>
+              <td>olive oil</td> 
+              <td>SEK</td>
+              <td>0,20</td>
+            </tr>
+            <tr>
+              <td class="weights">750 g</td>
+              <td>lean beef mince</td> 
+              <td>SEK</td>
+              <td>10,00</td>
+              </tr>
+            <tr>
+              <td class="weights">90 g</td>
+              <td>pack rosciutto</td> 
+              <td>SEK</td>
+              <td>15,00</td>
+            </tr>
+            <tr>
+              <td class="weights">100 ml</td>
+              <td>tomato sauce</td> 
+              <td>SEK</td>
+              <td>10,00</td>
+            </tr> 
+            <tr>
+              <td class="weights">200 ml</td>
+              <td>hot beef stock</td> 
+              <td>SEK</td>
+              <td>20,00</td>
+            </tr>
+            <tr>
+              <td class="weights">300 g</td>
+              <td>fresh pck lasagne sheets</td> 
+              <td>SEK</td>
+              <td>5,00</td>
+            </tr>
+            <tr>
+              <td class="weights">125 g</td>
+              <td>ball mozzarella</td> 
+              <td>SEK</td>
+              <td>12,00</td>
+            </tr>
+            <tr>
+              <td class="weights">100 ml</td>
+              <td>white sauce</td> 
+              <td>SEK</td>
+              <td>5,00</td>
+            </tr>
+            <tr>
+              <th>
+                <div class="addtoMenu">	
+                  <button type="button" class="addtoMenu">Add to menu</button>
+                </div>
+              </th>
+              <th></th> 
+              <th>SEK</th>
+              <th>77,20</th>
+            </tr>
+            </table>
+         </div>
+       </div>
+
+      </div>
+        
+    <script src="js/model/dinnerModel.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    
+  </body>
+ </html>
+
+
+
+ 
+<!-- 
+            <tr>
+              <td class="weights">2tsp</td>
+              <td>olive oil</td> 
+              <td>SEK</td>
+              <td>0,20</td>
+            </tr>
+            <tr>
+              <td class="weights">750 g</td>
+              <td>lean beef mince</td> 
+              <td>SEK</td>
+              <td>10,00</td>
+              </tr>
+            <tr>
+              <td class="weights">90 g</td>
+              <td>pack rosciutto</td> 
+              <td>SEK</td>
+              <td>15,00</td>
+            </tr>
+            <tr>
+              <td class="weights">100 ml</td>
+              <td>tomato sauce</td> 
+              <td>SEK</td>
+              <td>10,00</td>
+            </tr> 
+            <tr>
+              <td class="weights">200 ml</td>
+              <td>hot beef stock</td> 
+              <td>SEK</td>
+              <td>20,00</td>
+            </tr>
+            <tr>
+              <td class="weights">300 g</td>
+              <td>fresh pck lasagne sheets</td> 
+              <td>SEK</td>
+              <td>5,00</td>
+            </tr>
+            <tr>
+              <td class="weights">125 g</td>
+              <td>ball mozzarella</td> 
+              <td>SEK</td>
+              <td>12,00</td>
+            </tr>
+            <tr>
+              <td class="weights">100 ml</td>
+              <td>white sauce</td> 
+              <td>SEK</td>
+              <td>5,00</td>
+            </tr>
+            <tr>
+              <th>
+                <div class="addtoMenu">	
+                  <button type="button" class="addtoMenu">Add to menu</button>
+                </div>
+              </th>
+              <th></th> 
+              <th>SEK</th>
+              <th>77,20</th>
+            </tr>
+            
+            -->
+
+
+            <!-- 
+       <div class="row" ID="Sidebar">
+        
+         <div class="col-md-2 box-column" >
+           <div class="row">
+             <div class="title">
+               <h2>My Dinner </h2>
+             </div>
+           </div>
+           <div class="row">
+             <div class="title">
+               <h4>People </h4>
+               <input id="numberOfGuests" type="number" min="1" max="999" value="1" step="1" class="numberofpeople" />
+             </div>
+           </div>
+           <div class="row"> 
+             <div style="border-top: solid; border-bottom: solid; height:35px; margin-top: 5px" class="title2">
+               <h4 style="text-align:left"> Dish name </h4>
+               <h4 style="text-align:right; margin-right:10px" class="cost"> Cost </h4>
+             </div>
+           </div>
+           <div class="row">	
+             <h4 style="text-align:right; margin-right:10px; margin-bottom: 20px; margin-top: 20px"> SEK 0.00 </h4>
+           </div>
+           <div class="row"> 
+             <div class="contentbutton" style="text-align: center">	
+               <button type="button" class="newbutton">Confirm Dinner</button>
+             </div>
+          </div>
+        </div>
+      </div>
+        <div class="boxwithcolumns" id="dishDetails">
+         <div class="col-md-5 box-column2" ID="scroll" >
+            <div class="row">
+              <div class="titledish">
+               <h5 id="dishName">Lasagne </h5>
+              </div>
+              <div class="pic">
+                 <a class="picsize" target="_blank" href="C:\Users\Justyna\Documents\GitHub\dinnerplanner-html\images\lasagne.jpg">
+                   <img id="dishPicture" src="C:\Users\Justyna\Documents\GitHub\dinnerplanner-html\images\lasagne.jpg" alt="Cinque Terre" width="400" height="250">
+                 </a>
+               </div>
+              <div class=text>
+                <p id="dishNote">Cras pharetra felis vitae venenatis cursus. Sed vitae enim pulvinar, aliquam magna mollis, molestie urna. Cras lorem ligula, tincidunt ut ullamcorper auctor, cursus et massa.  </p>
+              </div>
+              <div class="backtoSearch">	
+                <button type="button" class="backtosearch">back to search</button>
+                </div>
+            
+            </div> 
+            <div class="titlepreparation">
+              <h6>Preparation</h6>
+              <p id="dishPrep">Cras pharetra felis vitae venenatis cursus. Sed vitae enim pulvinar, aliquam magna mollis, molestie urna. Cras lorem ligula, tincidunt ut ullamcorper auctor, cursus et massa.  </p>
+            </div> 
+         </div>
+         <div id="dishIngrendiens" class="col-md-5 box-column3" ID="scroll">
+            <h2>INGREDIENTS FOR <span id="people" class="numberofpeople"></span> PEOPLE </h2>
+            <style>
+              th, td{
+              font-weight:bold;
+              border-bottom: 1px solid #f5de93;
+              }
+            </style>
+            <table id="ingredientsTable" class="table">
+            
+            <tr>
+              <td class="weights">2tsp</td>
+              <td>olive oil</td> 
+              <td>SEK</td>
+              <td>0,20</td>
+            </tr>
+            <tr>
+              <td class="weights">750 g</td>
+              <td>lean beef mince</td> 
+              <td>SEK</td>
+              <td>10,00</td>
+              </tr>
+            <tr>
+              <td class="weights">90 g</td>
+              <td>pack rosciutto</td> 
+              <td>SEK</td>
+              <td>15,00</td>
+            </tr>
+            <tr>
+              <td class="weights">100 ml</td>
+              <td>tomato sauce</td> 
+              <td>SEK</td>
+              <td>10,00</td>
+            </tr> 
+            <tr>
+              <td class="weights">200 ml</td>
+              <td>hot beef stock</td> 
+              <td>SEK</td>
+              <td>20,00</td>
+            </tr>
+            <tr>
+              <td class="weights">300 g</td>
+              <td>fresh pck lasagne sheets</td> 
+              <td>SEK</td>
+              <td>5,00</td>
+            </tr>
+            <tr>
+              <td class="weights">125 g</td>
+              <td>ball mozzarella</td> 
+              <td>SEK</td>
+              <td>12,00</td>
+            </tr>
+            <tr>
+              <td class="weights">100 ml</td>
+              <td>white sauce</td> 
+              <td>SEK</td>
+              <td>5,00</td>
+            </tr>
+            
+            
+            <tr>
+              <th>
+                <div class="addtoMenu">	
+                  <button type="button" class="addtoMenu">Add to menu</button>
+                </div>
+              </th>
+              <th></th> 
+              <th>SEK</th>
+              <th>77,20</th>
+            </tr>
+            
+            </table>
+            
+          -->

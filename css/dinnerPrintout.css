@@ -1,0 +1,40 @@
+
+.front{
+  height:100px;
+  background-color: rgb(234, 234, 225);
+  text-align:right;
+  /*margin: 0px;*/
+  padding: 1em 0;
+  border-bottom-style: solid;
+  border-color: #777;
+}
+
+.maintitle{
+  text-align: center
+}
+
+.backtosearch{
+  border: solid;
+  background-color:rgba(255, 193, 112);
+  width: 200px;
+  padding: 2px 5px 5px 5px;
+  border-radius: 12px;
+  font-weight: bold;
+  margin: 0 auto;
+  display: block;
+}
+
+  
+.rowstyle{
+  border-bottom-style: solid;
+}
+  
+.text{
+  font-size: 13px;
+}
+
+.picsize{
+  margin: 30px;
+  border: solid black;
+}
+

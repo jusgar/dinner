@@ -1,0 +1,190 @@
+
+.front{
+  height:100px;
+  background-color: rgb(234, 234, 225);
+  text-align:right;
+  /*margin: 0px;*/
+  padding: 1em 0;
+}
+
+.maintitle{
+  text-align: center
+}
+
+.box-column{
+  /*height: 700px;*/
+  background-color:white;
+  text-align:left;
+  border-left: solid;
+  border-top:solid
+}
+
+.title{
+  display:flex;
+}
+
+h1{
+  text-indent: 12px;
+}
+
+h2 {
+  font-size: 20px;
+  text-indent: 10px;
+}
+
+h4{
+  text-indent: 10px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.numberofpeople{
+  width: 3em;
+  margin-left: 1em;
+  border: solid;
+}
+
+.title2{
+  background-color:rgba(0, 230, 230, 0.158);
+  display:flex;
+  justify-content: space-between;
+}
+
+.newbutton{
+  background-color:rgba(0, 230, 230, 0.158);
+  font-weight: bold;
+  height:25px;
+  width: 150px;  
+  opacity: 0.6;
+  cursor: not-allowed;
+  border: 1px solid;
+  box-shadow: 5px 5px;
+}
+
+/*h3 {
+  font-size: 20px;
+  border-block:solid;
+  text-indent: 12px;
+}*/
+
+.picsize{
+  margin-left: 12px;
+}
+
+.text{
+  margin-left: 12px;
+  margin-right: 40px;
+  margin-top: 10px;
+  font-size:  12px;
+}
+
+.btn{
+  
+  border: solid;
+  background-color:rgba(255, 193, 112);
+  width: 80%;
+  padding: 2px 5px 5px 5px;
+  border-radius: 12px;
+  font-weight: bold;
+}
+
+.scroll{
+  padding-bottom: 300px; 
+  overflow-y: scroll; 
+  }
+
+  /*h6{
+  font-size: 35px;
+  border-block:solid;
+  text-indent: 12px;
+  margin-top: 40px;
+}*/
+
+#dishIngrendiens{
+  background-color:rgba(245, 222, 147);
+  border:solid;
+  /*height: 400px;*/
+}
+
+.weights{
+  text-align: justify
+}
+
+.addtoMenu{
+  background-color:rgba(255, 193, 112);
+  width: 150px;
+  border: 1px solid;
+  box-shadow: 5px 5px;
+}
+
+
+
+
+
+
+
+/*
+.box-column2{
+  height: 700px;
+  background-color:white;
+  margin-left: 0px;
+}
+
+.box-column3{
+  height: 400px;
+  background-color:white;
+}
+
+h5{
+  font-size: 35px;
+  border-block:solid;
+  text-indent: 40px;
+  
+}
+
+.windowall{
+  width: 20%;
+  margin-left: 1em;
+  display: inline-block;
+}
+
+.search{
+  margin-left: 1em;
+  display: inline-block;
+  background-color:rgba(255, 193, 112);
+}
+
+
+.searchbar{
+  display:flex;
+  align-items: center;
+  border-bottom: solid
+}
+
+
+.keywords{
+  margin: 10px 0px 10px 50px;
+  width: 25%;
+}
+
+
+
+
+.sidebar {
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #f1f1f1;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+
+
+
+.td{
+  font-weight: bold;
+}
+
+
+*/

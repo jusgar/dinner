@@ -1,0 +1,183 @@
+
+
+
+.front{
+  height:100px;
+  background-color: rgb(234, 234, 225);
+  text-align:right;
+  /*margin: 0px;*/
+  padding: 1em 0;
+  border-bottom-style: solid;
+  border-color: #777;
+}
+
+.maintitle{
+  text-align: center
+}
+
+.backtosearch{
+  margin-left: 40px;
+  margin-top: 15px;
+  border: solid;
+  background-color:rgba(255, 193, 112);
+  width: 200px;
+  padding: 2px 5px 5px 5px;
+  border-radius: 12px;
+  font-weight: bold;
+  
+}
+
+.rowstyle{
+  border-bottom-style: solid;
+
+}
+
+.gallery {
+  display: inline-block;
+  margin: 20px;
+  border: solid;
+  width: 120px;
+  
+}
+
+.dish-list{
+  padding-left: 330px;
+}
+
+.desc{
+  text-align: center;
+  border-top: solid;
+}
+
+.printButton{
+  background-color:rgba(255, 193, 112);
+  font-weight: bold;
+  font-size: 18px;
+  width: 250px;
+  height: 40px;
+  border: 1px solid;
+  box-shadow: 5px 5px;
+ 
+  
+}
+
+/*
+.box-column{
+  height: 500px;
+  background-color:white;
+  text-align:left;
+  border-style: solid;
+}
+
+
+.box-column2{
+  height: 100px;
+  background-color:white;
+}
+
+
+h2 {
+  font-size: 30px;
+  text-indent: 10px;
+}
+  
+h3 {
+  font-size: 20px;
+  border-block:solid;
+  text-indent: 50px;
+}
+
+h4{
+  text-indent: 10px;
+}
+
+.newbutton{
+  background-color:rgba(0, 230, 230, 0.158);
+  font-weight: bold;
+  height:35px;
+  width: 200px;  
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.windowall{
+  width: 20%;
+  margin-left: 1em;
+  display: inline-block;
+}
+
+.search{
+  margin-left: 1em;
+  display: inline-block;
+  background-color:rgba(255, 193, 112);
+}
+
+.title2{
+  background-color:rgba(0, 230, 230, 0.158);
+  display:flex;
+  justify-content: space-between;
+}
+
+.title{
+  display:flex;
+  
+}
+
+.numberofpeople{
+  width: 3em;
+  margin-left: 1em;
+  border: solid;
+}
+
+.searchbar{
+  display:flex;
+  align-items: center;
+  border-bottom: solid
+}
+
+.cost{
+  margin-right: 2px;
+}
+
+.keywords{
+  margin: 10px 0px 10px 50px;
+  width: 25%;
+}
+    
+
+.gallery {
+  margin: 20px;
+  border: solid;
+  float: left;
+  width: 120px;
+  
+  
+}
+
+.gallery:hover {
+  border: 1px solid #777;
+}
+
+.desc {
+  text-align: center;
+  border-top: solid;
+}
+
+.rowgallery{
+  padding-top: 100px;
+  
+}
+
+.img{
+  width:100px;
+  height:100px;
+}
+
+
+#dish-container{
+  padding-bottom: 124px; 
+  overflow-y: scroll; 
+  margin-right: -15px;
+ 
+}
+*/
