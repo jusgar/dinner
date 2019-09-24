@@ -2,16 +2,31 @@
 class DinnerModel {
 
     constructor(){
-	this.dishes=dishesConst; // to be replaced in lab 3
-	this.observers=[];
-	
-	//TODO Lab 1 implement the data structure that will hold number of guest
-	// and selected dishes for the dinner menu
-	this.numberOfGuests = 3;
-	this.order = [];
-	this.selectDish = -1;
+		this.dishes = []; // to be replaced in lab 3
+		this.observers = [];
+		
+		//TODO Lab 1 implement the data structure that will hold number of guest
+		// and selected dishes for the dinner menu
+		this.numberOfGuests = 3;
+		this.order = [];
+		//this.order = [];
+		this.cache = new Map();
+		// this.limit = 30; // the max amount of dishes stored in the cache
+		this.selectedDish = -1;
+		this.imageURI = "";
+		this.loading = false;
+		this.error = false; 
 	}
 
+	isLoading() {
+		return this.loading;
+	}
+
+	hasError() {
+		return this.error;
+	}
+	
+	/* Observer Observable Pattern */
 	subscribe(elem){
 		this.observers.push(elem);
 	}
@@ -21,55 +36,62 @@ class DinnerModel {
 	notify(data){
 		this.observers.forEach(observer => observer(data));
 	}
+	
 	getCurrentDish(){
-		return this.selectDish;
+		return this.selectedDish;
 	}
 	setCurrentDish(id) {
-		this.selectDish=id;
+		this.selectedDish=id;
 	}
+	
 
 	setNumberOfGuests(num) {
-	this.numberOfGuests=num;
+		this.numberOfGuests=num;
 	}
 	
 	getNumberOfGuests() {
-	return this.numberOfGuests;
+		return this.numberOfGuests;
 	}
 
+	/*
 	//Returns the dish that is on the menu for selected type 
 	getSelectedDish(type) {
-	return this.getAllDishes(type);
-	
+		return this.getAllDishes(type);
 	}
+	*/
 
+	/*
 	//Returns all the dishes on the menu.
 	getFullMenu() {
-	const dishes = [];
-	dishes.push(this.getAllDishes("starter"));
-	dishes.push(this.getAllDishes("main dish"));
-	dishes.push(this.getAllDishes("dessert"));
-	console.log(dishes);
-	return dishes;
+		const dishes = [];
+		dishes.push(this.getAllDishes("starter"));
+		dishes.push(this.getAllDishes("main dish"));
+		dishes.push(this.getAllDishes("dessert"));
+		console.log(dishes);
+		return dishes;
 	}
+	*/
 
+	/*
 	//Returns all ingredients for all the dishes on the menu.
 	getAllIngredients() {
-	const dishes = this.getFullMenu();
-	const all = [];
-	let i=0;
-	let j=0;
-	for(i=0;i<dishes.length;i++){
-		for(j=0;j<dishes[i].length;j++){
-			all.push(dishes[i][j].ingredients);
+		const dishes = this.getFullMenu();
+		const all = [];
+		let i=0;
+		let j=0;
+		for(i=0;i<dishes.length;i++){
+			for(j=0;j<dishes[i].length;j++){
+				all.push(dishes[i][j].ingredients);
+			}
 		}
+		console.log(all);
+		return all;
 	}
-	console.log(all);
-	return all;
-	}
+	*/
 
 	//Returns the total price of the menu (all the ingredients multiplied by number of guests).
 	getTotalMenuPrice() {
-	let totalPrice = 0;
+	/*let totalPrice = 0;
 	for(let i=0;i<this.order.length;i++){
 		let dish = this.getDish(this.order[i]);
 		let ingredients = dish.ingredients;
@@ -81,19 +103,31 @@ class DinnerModel {
 	}
 	console.log(totalPrice);
 	return totalPrice;
-	
+	*/
+		let totalPrice = 0;
+		this.order.forEach(dish => {
+			totalPrice += dish.extendedIngredients.length * this.numberOfGuests;
+		});
+		return totalPrice;
 	}
 
 	//Adds the passed dish to the menu. If the dish of that type already exists on the menu
 	//it is removed from the menu and the new one added.
 	addDishToMenu(id) {
-		
-		if (this.getDish(id)){
+		/*for (let i = 0; i<this.cache.length; i++){
+			console.log(this.cache[i].id)
+			if (this.cache[i].id == id){
+				this.order.push(this.cache[i]);
+			}
+		}*/
+		this.order.push(this.cache.get(id));
+		/*if (this.getDish(id)){
 			this.order.push(id);
 		}
-		console.log(this.order);
+		console.log(this.order);*/
 	}
 
+	/*
 	//Removes dish from menu
 	removeDishFromMenu(id) {
 		let position = -1;
@@ -108,9 +142,15 @@ class DinnerModel {
 			return;
 		}
 		return this.order.splice(position,1);
-		
+	}*/
+
+	getOrder(){
+		return this.order;
 	}
 
+	getDishes() {
+		return this.dishes;
+	}
     
 	//function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")
 	//you can use the filter argument to filter out the dish by name or ingredient (use for search)
@@ -118,7 +158,7 @@ class DinnerModel {
 
 	// By using indexOf() fn we might get wrong results; eg by searching for "ice" we get meatballs as well since
 	// one of the ingredient name contains the word "diced"
-	getAllDishes(type,filter) {
+	/*getAllDishes(type,filter) {
 	  return this.dishes.filter(function(dish) {
 		let found = true;
 		if(filter){
@@ -135,17 +175,154 @@ class DinnerModel {
 		}
 	  	return dish.type == type && found;
 	  });	
+	}*/
+	executeInfo(id){
+		if(this.cache.has(id)){
+			return this.cache.get(id);
+		}
+		this.loading = true;	
+		this.notify();
+		fetch(
+			/*`https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/${id}/information`*/
+			`http://sunset.nada.kth.se:8080/iprog/group/66/recipes/${id}/information`, {
+			"method": "GET",
+			"headers": {
+				//"x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
+				//"x-rapidapi-key": API_KEY
+				"X-Mashape-Key": API_KEY
+			}
+		}).then(response => {
+			const data = JSON.parse(response);
+			console.log(response);
+			console.log(data);
+			this.cache.set(id, data);
+			this.loading = false;
+			this.notify();
+		}).catch(err => {
+			console.log(err);
+			this.error = true;
+			this.notify();
+		});
+		/*const settings = {
+			"async": true,
+			"crossDomain": true,
+			"url": `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/${id}/information`,
+			"method": "GET",
+			"headers": {
+				"x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
+				"x-rapidapi-key": API_KEY
+			}
+		}
+		
+		$.ajax(settings).done(function (response) {
+			console.log(response);
+		});*/
+		/*const settings = {
+			"async": true,
+			"crossDomain": false,
+			"url": "info.json",
+			"method": "GET",
+			"headers": {
+				"x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
+				"x-rapidapi-key": API_KEY
+			}
+		}
+		
+		$.ajax(settings).done(function (response) {
+			console.log(JSON.parse(response));
+			this.cache.push(infoResponse);
+		});*/
+	}
+	executeSearch(query, type){
+		this.loading = true;
+		/*const settings = {
+			"async": true,
+			"crossDomain": true,
+			"url": `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search?number=18&offset=0&type=${type}&query=${query}`,
+			"method": "GET",
+			"headers": {
+				"x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
+				"x-rapidapi-key": API_KEY
+			}
+		}
+		
+		$.ajax(settings).done(function (response) {
+			console.log(response);
+		});*/
+		fetch(
+			/*`https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search?number=18&offset=0&type=${type}&query=${query}`*/
+			`http://sunset.nada.kth.se:8080/iprog/group/66/recipes/search?number=20&type=${type}&query=${query}`, {
+			"method": "GET",
+			"headers": {
+				//"x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
+				//"x-rapidapi-key": API_KEY
+				"X-Mashape-Key": API_KEY
+			}
+		}).then(response => {
+			const data = JSON.parse(response);
+			console.log(response);
+			console.log(data);
+			this.dishes.push(data);
+			this.imageURI = data.baseUri;
+			this.loading = false;
+			this.notify();
+		}).catch(err => {
+			console.log(err);
+			this.error = true;
+			this.notify();
+		});
+		/*const response = searchResponse;
+		this.imageURI = response.baseUri;
+		this.dishes = response.results;
+		console.log(this.dishes);
+		return this.dishes;*/
+	}
+
+	valid(type) {
+		const dishKind = ["", "main course", "side dish", "dessert", "appetizer", "salad", "bread", "breakfast", "soup", "beverage", "sauce", "drink"];
+		for (let i=0; i<dishKind.length ;i++){
+			if(dishKind[i] === type){
+				return true;
+			}
+		}
+		//main course, side dish, dessert, appetizer, salad, bread, breakfast, soup, beverage, sauce, or drink.
+		return false;
+	}
+
+	getAllDishesFromAPI(searchform, type){
+		if (searchform === "" || !this.valid(type)){
+			console.log("error: no search term inserted, or type not valid.");
+			alert("error: no search term inserted, or type not valid.");
+			return;
+		} else {
+			this.executeSearch(searchform, type);
+		}
+	}
+
+	getBaseURI(){
+		return this.imageURI;
 	}
 
 	//function that returns a dish of specific ID
-	getDish (id) {
-	    for(let dsh of this.dishes){
-		if(dsh.id == id) {
-		    return dsh;
+	/*getDish (id) {
+		for (let i = 0; i<this.dishes.length; i++){
+			if (this.dishes[i].id == id){
+				return this.dishes[i];
+			}
 		}
+		return undefined;
+	    /*for(let dsh of this.dishes){
+			if(dsh.id == id) {
+				return dsh;
+			}
 	    }
 	    return undefined;
+	}*/
+
+	getFullDish (id) {
+		return this.cache.get(id);
 	}
+
 }
 
 	// the dishes constant contains an array of all the 
@@ -156,6 +333,7 @@ class DinnerModel {
 	// defining the unit i.e. "g", "slices", "ml". Unit
 	// can sometimes be empty like in the example of eggs where
 	// you just say "5 eggs" and not "5 pieces of eggs" or anything else.
+	/*
         const dishesConst = [{
 		'id':1,
 		'name':'French toast',
@@ -397,6 +575,6 @@ class DinnerModel {
 			'price':6
 			}]
 		}
-	];
+	];*/
 
 

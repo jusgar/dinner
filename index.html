@@ -95,10 +95,19 @@
 						<div class="col-md-2">
 							<select id="searchType" class="windowall">
 								<option value="">All</option>
-								<option value="starter">Appetizer</option>
-								<option value="main dish">Main Course</option>
+								<option value="appetizer">Appetizer</option>
+								<option value="main course">Main Course</option>
+								<option value="side dish">Side dish</option>
+								<option value="salad">Salad</option>
+								<option value="bread">Bread</option>
+								<option value="breakfast">Breakfast</option>
+								<option value="soup">Soup</option>
+								<option value="beverage">Beverage</option>
+								<option value="sauce">Sauce</option>
+								<option value="drink">Drink</option>
 								<option value="dessert">Dessert</option>
 							</select>
+							<!--main course, side dish, dessert, appetizer, salad, bread, breakfast, soup, beverage, sauce, or drink.-->
 						</div>
 						<div class="col-md-2">
 							<div class="Search">	
@@ -107,8 +116,15 @@
 						</div>
 					</div>
 					<div class="row"><br /></div>
+					</div>						
+					<div class="loader">
+							<p>loading</p>
+					</div>
+					<div class="error">
+						<p>error</p>
 					</div>
 					<div class="row rowgallery" id="dishContainerView">
+
 						<!--<div class="col-sm-6 col-md-2">
 							<div class="thumbnail">
 							<img src="C:\Users\Justyna\Documents\GitHub\dinnerplanner-html\images\bakedbrie.jpg" alt="...">
@@ -125,11 +141,11 @@
 							<div class="thumbnail">
 								<div class="caption">
 									<h1 id="dishName"></h1>
-									<img class="picsize img-responsive" id="dishPicture" src="" alt="Cinque Terre">
+									<img class="img-responsive" id="dishPicture" src="" alt="">
 									<p class=text id="dishNote"></p>
-									<p><a href="#" id="backToSearchButton" class="btn btn-default" role="button">back to search</a></p>
+									<p><a href="#" id="backToSearchButton" class="btn btn-default backtosearch" role="button">back to search</a></p>
 									<h2>Preparation</h2>
-									<p class="text" id="dishPrep">Cras pharetra felis vitae venenatis cursus. Sed vitae enim pulvinar, aliquam magna mollis, molestie urna. Cras lorem ligula, tincidunt ut ullamcorper auctor, cursus et massa.  </p>
+									<p class="text" id="dishPrep"></p>
 								</div>
 							</div> 
 						</div>
@@ -275,6 +291,8 @@
 
 		<!-- The application JavaScript code -->
 		<script src="js/app.js"></script>
+		<script src="api.js"></script>
+		<script src="sampleResponses.js"></script>
 		<script src="js/model/dinnerModel.js"></script>
 		<script src="js/view/exampleView.js"></script>
 		<script src="js/view/sideBarView.js"></script>
@@ -282,6 +300,7 @@
 		<script src="js/view/dishContainerView.js"></script>
 		<script src="js/view/searchBarView.js"></script>
 		<script src="js/view/printoutView.js"></script>
+		<script src="js/view/dinnerOverView.js"></script>
 
 		<!-- TODO: Here you should include JS code for your other views -->
 </body>

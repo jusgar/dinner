@@ -14,58 +14,70 @@
  */
 class DishContainerView {
     constructor (container, model) {
-	this.container=container;
-	this.model=model;
-	console.log(this.container);
+		this.container=container;
+		this.model=model;
+		this.update = this.update.bind(this);
+		this.model.subscribe(this.update);
+        this.errorDiv = $(".error", this.container);
+	}
 
-	const dish1 = container.querySelector("#id3");
-	const dish2 = container.querySelector("#id200");
-	dish1.addEventListener("click", (event) => {
-		this.model.setCurrentDish(event.target.id);
-		window.location = "file:///C:/Users/Justyna/Documents/GitHub/dinnerplanner-html/dishdetails.html";
-	});
-	dish2.addEventListener("click", (event) => {
-		this.model.setCurrentDish(event.target.id);
-		window.location = "file:///C:/Users/Justyna/Documents/GitHub/dinnerplanner-html/dishdetails.html";
-	});
-	
-
-
-
-	/**
-	 * numberOfGuests is a reference to the <span> element that 
-	 * represents the placeholder for where we want to show the number of guests. It's
-	 * a reference to HTML element (wrapped in jQuery object for added benefit of jQuery methods)
-	 * and we can use it to modify <span>, for example to populate it with dynamic data (for now 
-	 * only 'Hello world', but you should change this by end of Lab 1).
-	 * 
-	 * IMPORTANT: Never use document.querySelector() directly in the views. Always use
-	 * some other way of searching only among the containers child elements. In this way you
-	 * make your view code modular and ensure it dosn't break if by mistake somebody else
-	 * in some other view gives the same ID to another element.
-	 * 
-	 */
-	this.numberOfGuests = container.querySelector("#numberOfGuests");
-
-	/**
-	 * When we want references to some view elements to be available from outside of view, we 
-	 * define them as this.someName. We don't need this in Lab 1 yet, but in Lab 2 it 
-	 * will be important for assigning listeners to these buttons, because the listeners
-	 * should not be assigned in the view, but rather in controller.
-	 * 
-	 * We can then, in some other code, use exampleView.plusButton to reference the 
-	 * this button and do something with it (see Lab 2).
-	 * 
-	 */
-	this.plusButton = container.querySelector("#plusGuest");
-	this.minusButton = container.querySelector("#minusGuest");
-	
-	/**
-	 * Here we use numberOfGuests that is a reference to <span>
-	 * in our view to dynamically set it's value to "Hello World".
-	 */
-    }
-
-    // in lab 2, the Observer update method will come here
+	update(data){
+        if (this.model.hasError()) {
+			alert("There's something wrong with the Internet");
+			return;
+        }
+        if (this.model.isLoading()){
+			this.container.find('#dishContainerView').empty().append('loading...');
+        } else {
+			const container = $("#dishContainerView", this.container);
+			const dishes = this.model.getDishes();
+			container.empty();
+			if (dishes.length === 0){
+				container.append($(`<p>no results</p>`));
+			} else {
+				dishes.forEach(dish => {
+					const div = $(`<div class="col-sm-6 col-md-2"></div>`);
+					const div1 = $(`<div class="thumbnail"></div>`);
+					const img = $(`<img src="${model.getBaseURI()}${dish.image}" alt="${dish.title}">`);
+					const div2 = $(`<div class="caption" style="text-align: center">`);
+					const h5 = $(`<h5>${dish.title}</h5>`);
+					const p = $(`<p> <a href="#" id="${dish.id}" class="btn btn-default mydishes" role="button">Show details</a></p>`);
+					div.append(div1);
+					div1.append(img);
+					div1.append(div2);
+					div2.append(h5);
+					div2.append(p);
+					container.append(div);
+				});
+			}
+		}
+	}
 }
  
+/*function generateDishes(dishes) {
+		const container = $("#dishContainerView");
+		container.empty();
+		if (dishes.length === 0){
+			container.append($(`<p>no results</p>`));
+			return;
+		}
+		dishes.forEach(dish => {
+			const div = $(`<div class="col-sm-6 col-md-2"></div>`);
+			const div1 = $(`<div class="thumbnail"></div>`);
+			const img = $(`<img src="${model.getBaseURI()}${dish.image}" alt="${dish.title}">`);
+			const div2 = $(`<div class="caption" style="text-align: center">`);
+			const h5 = $(`<h5>${dish.title}</h5>`);
+			const p = $(`<p> <a href="#" id="${dish.id}" class="btn btn-default mydishes" role="button">Show details</a></p>`);
+			div.append(div1);
+			div1.append(img);
+			div1.append(div2);
+			div2.append(h5);
+			div2.append(p);
+			container.append(div);
+		});
+		$(".mydishes").on("click", function(event){
+			model.setCurrentDish(event.currentTarget.id);
+			ingredients();
+			model.notify();
+		});
+	}*/

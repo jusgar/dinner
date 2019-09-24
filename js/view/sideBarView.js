@@ -17,25 +17,34 @@ class SideBarView {
 		this.container=container;
 		this.model=model;
 		this.update = this.update.bind(this);
+		this.updateNumberOfGuests = this.updateNumberOfGuests.bind(this);
 		this.model.subscribe(this.update);
 		$("#numberOfGuests", this.container).attr("value", this.model.getNumberOfGuests());
+		$("#numberOfGuests", this.container).on("change", this.updateNumberOfGuests);
 	}
+
+	updateNumberOfGuests(event) {
+		//this.model.setNumberOfGuests(parseInt($("#numberOfGuests", this.container).val(), 10));
+		this.model.setNumberOfGuests(parseInt(event.currentTarget.value, 10));
+		this.model.notify();
+	}
+
 	update(data){
 		$("#sideBarViewTable", this.container).empty();
 		$("#numberOfGuests", this.container).attr("value", this.model.getNumberOfGuests());
-		const dishes = [];
+		const dishes = this.model.getOrder();
 		const guests = this.model.getNumberOfGuests();
-		for(let i = 0; i<this.model.order.length; i++){
+		/*for(let i = 0; i<this.model.order.length; i++){
 			dishes.push(this.model.getDish(this.model.order[i]));
-		}
+		}*/
 		if(dishes.length > 0){
 			let dinnerTotal = 0;
 			dishes.forEach(dish => {
-				let total = 0;
-				dish.ingredients.forEach(ingredient => {
+				let total = dish.extendedIngredients.length * guests;
+				/*dish.extendedIngredients.forEach(ingredient => {
 					total += (ingredient.price * guests);
-				})
-				const row = $(`<div class="row"><div style="border:1px solid" class="title2"><h4 style="text-align:left">${dish.name}</h4><h4 style="text-align:right" class="cost">${total.toFixed(2)}</h4></div></div>`);
+				})*/
+				const row = $(`<div class="row"><div style="border:1px solid" class="title2"><h4 style="text-align:left">${dish.title}</h4><h4 style="text-align:right" class="cost">${total.toFixed(2)}</h4></div></div>`);
 				$("#sideBarViewTable", this.container).append(row);
 				dinnerTotal += total;
 			});

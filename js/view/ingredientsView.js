@@ -19,9 +19,45 @@ class IngredientsView {
         this.update = this.update.bind(this);
         this.model.subscribe(this.update); /*observer part */
         $("#people", this.container).text(this.model.getNumberOfGuests());  
+        this.errorDiv = $(".error", this.container);
     }
+
     update(data){
-        $("#people", this.container).text(this.model.getNumberOfGuests()); 
+        if (this.model.hasError()) {
+            this.container.find('#ingredientsTable').empty().append('error!');
+            return;
+        }
+        if (this.model.isLoading()){
+            this.container.find('#ingredientsTable').empty().append('loading...');
+        } else {       
+            const container = $("#ingredientsTable", this.container);
+            container.empty();
+            //const dish = model.getDish(tmpId);
+            const dish = this.model.getFullDish(this.model.getCurrentDish());
+            if (dish) {
+                const guests = this.model.getNumberOfGuests();
+                let total = 0;
+                $("#dishName").text(dish.title);
+                $("#dishPicture").attr("src", dish.image);
+                $("#dishPicture").attr("alt", dish.title);
+                //$("#dishNote").text(dish.description);
+                $("#dishPrep").text(dish.instructions);
+                dish.extendedIngredients.forEach(ingredient => {
+                    const tr = $(`<tr></tr>`);
+                    const td = $(`<td class="weights">${(ingredient.amount * guests).toFixed(1)} ${ingredient.unit}</td>`);
+                    const td1 = $(`<td>${ingredient.name}</td>`);
+                    const td2 = $(`<td>SEK</td>`);
+                    const td3 = $(`<td>${(guests).toFixed(2)}</td>`);
+                    tr.append(td, td1, td2, td3);
+                    container.append(tr);
+                    total += guests;
+                });
+                const el = $(`<tr><th><div class="addtoMenu"><button id="${dish.id}" type="button" class="addtoMenu">Add to menu</button></div></th><th></th> <th>SEK</th><th>${total.toFixed(2)}</th></tr>`);
+                container.append(`<br>`, el);
+                $("#people", this.container).text(this.model.getNumberOfGuests()); 
+            }
+        }  
+        
     }
 
     /* console.log(this.model.getCurrentDish());

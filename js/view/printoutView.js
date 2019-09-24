@@ -2,16 +2,17 @@ class PrintoutView{
     constructor (container, model){
         this.container = container;
         this.model = model;
-        this.update = this.update.bind(this);
-        this.model.subscribe(this.update);
+        this.createPrintout = this.createPrintout.bind(this);
     }
-    update(data){
-        const dishes = [];
+
+    createPrintout(){
+        const dishes = this.model.getOrder();
         $(".numberOfGuests").text(this.model.getNumberOfGuests());
         $(".totalPrice").text(this.model.getTotalMenuPrice());
+        /*
         for (let i=0; i<this.model.order.length; i++){
 			dishes.push(this.model.getDish(this.model.order[i]));
-        }
+        }*/
         const father = $("#printoutDishes", this.container);
         father.empty();
         dishes.forEach(dish => {
@@ -19,16 +20,16 @@ class PrintoutView{
             const div =$(`<div class="col-md-2">
             <div id="dishPicture">
                 <a href="#">
-                    <img src="images/${dish.image}" alt="${dish.name}">
+                    <img class="img-responsive" src="${dish.image}" alt="${dish.title}">
                 </a>
             </div>
         </div>`)
             const div1 = $(`<div class="col-md-3">
             <div class="titledish">
-                <h2>${dish.name}</h2>
+                <h2>${dish.title}</h2>
             </div>
             <div class="text">
-                <p>${dish.description}</p>
+                <p></p>
             </div>
         </div>`);
             const prep = $(`<div class="col-md-7">
@@ -36,12 +37,7 @@ class PrintoutView{
                 <h4>Preparation </h4>
             </div>
             <div class="text">
-                <p>Cras pharetra felis vitae venenatis cursus. Sed vitae enim pulvinar, aliquam magna mollis, molestie urna. Cras lorem ligula, tincidunt ut ullamcorper auctor, cursus et massa. Cras pharetra felis vitae venenatis cursus. Sed vitae enim pulvinar, aliquam magna mollis, molestie urna. Cras lorem ligula, tincidunt ut ullamcorper auctor, cursus et massa. Cras pharetra felis vitae venenatis cursus. Sed vitae enim pulvinar, aliquam magna mollis, molestie urna. Cras lorem ligula, tincidunt ut ullamcorper auctor, cursus et massa.
-                    Cras pharetra felis vitae venenatis cursus. Sed vitae enim pulvinar, aliquam magna mollis, molestie urna. Cras lorem ligula, tincidunt ut ullamcorper auctor, cursus et massa. 
-                </p>
-                <p>Cras pharetra felis vitae venenatis cursus. Sed vitae enim pulvinar, aliquam magna mollis, molestie urna. Cras lorem ligula, tincidunt ut ullamcorper auctor, cursus et massa. Cras pharetra felis vitae venenatis cursus. Sed vitae enim pulvinar, aliquam magna mollis, molestie urna. Cras lorem ligula, tincidunt ut ullamcorper auctor, cursus et massa. Cras pharetra felis vitae venenatis cursus. Sed vitae enim pulvinar, aliquam magna mollis, molestie urna. Cras lorem ligula, tincidunt ut ullamcorper auctor, cursus et massa.
-                    Cras pharetra felis vitae venenatis cursus.  
-                </p>
+                <p>${dish.instructions}</p>
             </div>
         </div>`);
         father.append(row, div, div1, prep);
