@@ -183,13 +183,13 @@ class DinnerModel {
 		this.loading = true;	
 		this.notify();
 		fetch(
-			/*`https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/${id}/information`*/
-			`http://sunset.nada.kth.se:8080/iprog/group/66/recipes/${id}/information`, {
+			`https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/${id}/information`
+			/*`http://sunset.nada.kth.se:8080/iprog/group/66/recipes/${id}/information`*/, {
 			"method": "GET",
 			"headers": {
-				//"x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
-				//"x-rapidapi-key": API_KEY
-				"X-Mashape-Key": API_KEY
+				"x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
+				"x-rapidapi-key": API_KEY
+				/*"X-Mashape-Key": API_KEY*/
 			}
 		}).then(response => {
 			const data = JSON.parse(response);
@@ -250,13 +250,13 @@ class DinnerModel {
 			console.log(response);
 		});*/
 		fetch(
-			/*`https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search?number=18&offset=0&type=${type}&query=${query}`*/
-			`http://sunset.nada.kth.se:8080/iprog/group/66/recipes/search?number=20&type=${type}&query=${query}`, {
+			`https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search?number=18&offset=0&type=${type}&query=${query}`
+			/*`http://sunset.nada.kth.se:8080/iprog/group/66/recipes/search?number=20&type=${type}&query=${query}`*/, {
 			"method": "GET",
 			"headers": {
-				//"x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
-				//"x-rapidapi-key": API_KEY
-				"X-Mashape-Key": API_KEY
+				"x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
+				"x-rapidapi-key": API_KEY
+				//"X-Mashape-Key": API_KEY
 			}
 		}).then(response => {
 			const data = JSON.parse(response);
