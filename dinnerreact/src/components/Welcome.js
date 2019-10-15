@@ -1,16 +1,11 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import './Welcome.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Welcome() {
     return (
         <div className="Welcome">
-            <div className="row front">
-                <div className="col-md-4"></div>
-                <div className="col-md-4">	
-                    <h1 className="text-center" style={{"padding": "35px"}}>Dinner planner</h1>
-                </div>
-                <div className="col-md-4"></div>
-		    </div>
             <br />
             <div className="row ">
                 <div className="col-md-4 welcomeViewBox"></div>
@@ -26,7 +21,7 @@ function Welcome() {
             <div className="row">
                 <div className="col-md-4"></div>
                 <div className="col-md-4 contentbutton">
-                    <button id="showDinnerBtn" type="button" className="createNewbutton">Create new dinner</button>
+                    <Link to="/dinner"><button id="showDinnerBtn" type="button" className="createNewbutton">Create new dinner</button></Link>
                 </div>
                 <div className="col-md-4"></div>
             </div>

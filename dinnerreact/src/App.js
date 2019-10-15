@@ -1,8 +1,17 @@
 import React from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useRouteMatch,
+  useParams
+} from "react-router-dom";
 import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Welcome from './components/Welcome.js';
+import Dinner from './components/Dinner.js';
 
 function App() {
   return (
@@ -22,9 +31,24 @@ function App() {
         </a>
       </header>
     </div>*/
-    <div className="container-fluid">
-      <Welcome />
-    </div>
+
+      <Router> 
+        <div className="container-fluid">
+          <div className="row front">
+                  <div className="col-md-4"></div>
+                  <div className="col-md-4">	
+                      <h1 className="text-center" style={{"padding": "35px"}}>Dinner planner</h1>
+                  </div>
+                  <div className="col-md-4"></div>
+          </div>
+          <Switch>
+            <Route path="/dinner" component={Dinner} />
+            <Route path="/" component={Welcome} />
+          </Switch> 
+        </div>
+      </Router>
+      
+   
     
   );
 }
