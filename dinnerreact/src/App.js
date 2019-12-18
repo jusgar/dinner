@@ -6,12 +6,13 @@ import {
   Link,
   useRouteMatch,
   useParams
-} from "react-router-dom";
+} from 'react-router-dom';
 import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Welcome from './components/Welcome.js';
 import Dinner from './components/Dinner.js';
+import DishDetails from './components/DishDetails.js';
 
 function App() {
   return (
@@ -32,24 +33,24 @@ function App() {
       </header>
     </div>*/
 
-      <Router> 
-        <div className="container-fluid">
-          <div className="row front">
-                  <div className="col-md-4"></div>
-                  <div className="col-md-4">	
-                      <h1 className="text-center" style={{"padding": "35px"}}>Dinner planner</h1>
-                  </div>
-                  <div className="col-md-4"></div>
+    <Router>
+      <div className="container-fluid">
+        <div className="row front">
+          <div className="col-md-4"></div>
+          <div className="col-md-4">
+            <h1 className="text-center" style={{ padding: '35px' }}>
+              Dinner planner
+            </h1>
           </div>
-          <Switch>
-            <Route path="/dinner" component={Dinner} />
-            <Route path="/" component={Welcome} />
-          </Switch> 
+          <div className="col-md-4"></div>
         </div>
-      </Router>
-      
-   
-    
+        <Switch>
+          <Route path="/dinner/dish/:id" component={DishDetails} />
+          <Route path="/dinner" exact component={Dinner} />
+          <Route path="/" exact component={Welcome} />
+        </Switch>
+      </div>
+    </Router>
   );
 }
 

@@ -1,38 +1,77 @@
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
+import Col from 'react-bootstrap/Col';
+import Image from 'react-bootstrap/Image';
 
 class Dishes extends Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            dishes: [],
-        }
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      dishes: [],
+      error: false,
+      errorMsg: '',
+      loading: false
+    };
+  }
+  componentDidMount() {
+    this.fetchDishes({ quality: 'Legendary', health: 15 });
+  }
+  // fetch dishes
+  fetchDishes = async params => {
+    this.setState({ loading: true });
+    const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+    const targetUrl = `https://omgvamp-hearthstone-v1.p.rapidapi.com/cards/qualities/${params.quality}?health=${params.health}`;
+    const data = await fetch(proxyUrl + targetUrl, {
+      method: 'GET',
+      headers: {
+        'x-rapidapi-host': 'omgvamp-hearthstone-v1.p.rapidapi.com',
+        'x-rapidapi-key': '37e23f395amshef4b0440541150dp1c40cejsnbe092fc46af9'
+      }
+    });
+    const items = await data.json();
+    console.log(items);
+    this.setState({
+      dishes: items,
+      error: false,
+      errorMsg: '',
+      loading: false
+    });
+  };
 
-    // fetch dishes
+  createDish = dish => {
+    return (
+      <Col sm={6} md={2} key={dish.cardId}>
+        <div className="thumbnail">
+          <Image
+            src={dish.img}
+            alt={dish.name}
+            thumbnail
+            onError={e => {
+              e.target.onerror = null;
+              e.target.src = 'imgs/default2.png';
+            }}
+          />
+          <div className="caption">
+            <h6>{dish.name}</h6>
+            <p>
+              <Link to={`/dinner/dish/${dish.cardId}`}>Show details</Link>
+            </p>
+          </div>
+        </div>
+      </Col>
+    );
+  };
 
-    createDish = dish => {
-        return (
-            <div class="col-sm-6 col-md-2" key={dish.id}>
-                <div class="thumbnail">
-                    <img src={dish.image} alt={dish.title} />
-                    <div class="caption">
-                        <h5></h5>
-                        <p><Link to={`/${dish.id}`}>Show details</Link></p>
-                    </div>
-                </div>
-            </div>
-        )
+  render() {
+    if (this.state.loading) {
+      return <p>loading</p>;
     }
-
-    render () {
-        const dishesToRender = this.state.dishes.map(dish => this.createDish(dish)); 
-        return (
-            <>
-                {dishesToRender}
-            </>
-        );
+    if (this.state.error) {
+      return <p>error</p>;
     }
+    const dishesToRender = this.state.dishes.map(dish => this.createDish(dish));
+    return <>{dishesToRender}</>;
+  }
 }
 
 export default Dishes;
