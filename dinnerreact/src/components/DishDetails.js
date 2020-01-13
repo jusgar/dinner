@@ -78,6 +78,17 @@ class DishDetails extends Component {
     );
   };
 */
+  add = () => {
+    this.props.history.push({
+      pathname: '/dinner',
+      state: {
+        id: this.props.match.params.id,
+        description: this.state.dish.text,
+        title: this.state.dish.name,
+        image: this.state.dish.img
+      }
+    });
+  };
   createDish = dish => {
     return (
       <>
@@ -102,7 +113,9 @@ class DishDetails extends Component {
             <Button href="http://localhost:3000/dinner" variant="success">
               Go back
             </Button>
-            <Button variant="warning">Add </Button>
+            <Button variant="warning" onClick={this.add}>
+              Add
+            </Button>
           </Col>
         </Row>
       </>

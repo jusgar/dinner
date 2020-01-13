@@ -13,6 +13,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Welcome from './components/Welcome.js';
 import Dinner from './components/Dinner.js';
 import DishDetails from './components/DishDetails.js';
+import Review from './components/Review.js';
 
 function App() {
   return (
@@ -47,6 +48,7 @@ function App() {
         <Switch>
           <Route path="/dinner/dish/:id" component={DishDetails} />
           <Route path="/dinner" exact component={Dinner} />
+          <Route path="/review" exact component={Review} />
           <Route path="/" exact component={Welcome} />
         </Switch>
       </div>

@@ -16,6 +16,7 @@ class Dishes extends Component {
   componentDidMount() {
     this.fetchDishes({ quality: 'Legendary', health: 15 });
   }
+
   // fetch dishes
   fetchDishes = async params => {
     this.setState({ loading: true });
