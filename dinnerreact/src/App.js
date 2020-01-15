@@ -1,4 +1,5 @@
 import React from 'react';
+import { Row, Col, Container } from 'react-bootstrap';
 import {
   BrowserRouter as Router,
   Switch,
@@ -35,23 +36,23 @@ function App() {
     </div>*/
 
     <Router>
-      <div className="container-fluid">
-        <div className="row front">
-          <div className="col-md-4"></div>
-          <div className="col-md-4">
+      <Container fluid>
+        <Row className="front">
+          <Col md="4"></Col>
+          <Col md="4">
             <h1 className="text-center" style={{ padding: '35px' }}>
               Dinner planner
             </h1>
-          </div>
-          <div className="col-md-4"></div>
-        </div>
+          </Col>
+          <Col md="4"></Col>
+        </Row>
         <Switch>
           <Route path="/dinner/dish/:id" component={DishDetails} />
           <Route path="/dinner" exact component={Dinner} />
           <Route path="/review" exact component={Review} />
           <Route path="/" exact component={Welcome} />
         </Switch>
-      </div>
+      </Container>
     </Router>
   );
 }

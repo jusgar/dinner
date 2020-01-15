@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import SearchBar from './SearchBar';
 import SideBar from './SideBar';
+import SearchBar from './SearchBar';
 import Dishes from './Dishes';
+import { Row, Col, Container } from 'react-bootstrap';
 
 const store = [];
 let guests = 1;
@@ -44,25 +45,26 @@ class Dinner extends Component {
   render() {
     return (
       <>
-        <div className="row">
-          <div className="col-md-2">
+        <Row>
+          <Col md="3">
             <SideBar
               menu={store}
               updateFn={this.updateGuests}
               currG={guests}
               nextFn={this.review}
             />
-          </div>
-          <div className="col-md-10">
+          </Col>
+          <Col md="3"></Col>
+          <Col md="9">
             <SearchBar />
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-md-2"></div>
-          <div className="col-md-10">
+          </Col>
+        </Row>
+        <Row>
+          <Col md="3"></Col>
+          <Col md="9">
             <Dishes />
-          </div>
-        </div>
+          </Col>
+        </Row>
       </>
     );
   }

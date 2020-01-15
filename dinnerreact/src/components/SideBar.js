@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Button from 'react-bootstrap/Button';
+import { Row, Col, Container } from 'react-bootstrap';
 
 class SideBar extends Component {
   constructor(props) {
@@ -20,13 +21,11 @@ class SideBar extends Component {
 
   render() {
     return (
-      <div className="box-column" id="sideBarView">
-        <div className="row">
+      <Row>
+        <Col md="12">
           <div className="title">
             <h2>My Dinner </h2>
           </div>
-        </div>
-        <div className="row">
           <div className="title">
             <h4>People </h4>
             <input
@@ -38,10 +37,6 @@ class SideBar extends Component {
               onChange={this.update}
             />
           </div>
-        </div>
-        <div id="sideBarViewTable"></div>
-        <div className="row contentbutton">
-          <br />
           <Button
             id="confirmDinnerButton"
             type="button"
@@ -50,8 +45,8 @@ class SideBar extends Component {
           >
             Confirm Dinner
           </Button>
-        </div>
-      </div>
+        </Col>
+      </Row>
     );
   }
 }

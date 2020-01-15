@@ -1,25 +1,18 @@
-.front{
-    height:100px;
-    background-color: rgb(234, 234, 225);
+.front {
+  background-color: rgb(234, 234, 225);
 }
 
-.createNewbutton{
-    font-weight: bold;
-    height:45px;
-    background-color:rgba(255, 193, 112);
-    width: 150px;
-    border: 1px solid;
-    box-shadow: 5px 5px;
-    margin: 0 auto;
-    display: block;
-    
+.createNewbutton {
+  font-weight: bold;
+  height: 45px;
+  background-color: rgba(255, 193, 112);
+  width: 150px;
+  border: 1px solid;
+  box-shadow: 5px 5px;
+  margin: 0 auto;
+  display: block;
 }
 
-.welcomeViewBox{
-    height: 150px;
+.welcomeViewBox {
+  height: 150px;
 }
-
-
-
-
-
