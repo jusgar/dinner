@@ -41,7 +41,7 @@ class Dishes extends Component {
 
   createDish = dish => {
     return (
-      <Col sm={6} md={2} key={dish.cardId}>
+      <Col sm={6} md={3} key={dish.cardId}>
         <div className="thumbnail">
           <Image
             src={dish.img}

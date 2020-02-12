@@ -110,12 +110,12 @@ class DishDetails extends Component {
         </Row>
         <Row>
           <Col>
-            <Button href="http://localhost:3000/dinner" variant="success">
+            <Link to={'/dinner'} variant="success">
               Go back
-            </Button>
-            <Button variant="warning" onClick={this.add}>
+            </Link>
+            <Link variant="warning" onClick={this.add}>
               Add
-            </Button>
+            </Link>
           </Col>
         </Row>
       </>
